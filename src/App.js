@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import EditorComponent from './components/EditorComponent';
+import './components/HeaderComponent'
+import HeaderComponent from './components/HeaderComponent';
+import TokenList from './components/TokenList';
+import { useState } from 'react';
 
 function App() {
+  const [shouldReload, setShouldReload] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HeaderComponent/>  
+      <div className="main">
+      <EditorComponent onAnalyzed ={()=>{setShouldReload(prev => !prev)}}/>
+      <TokenList reloadTrigger={shouldReload}/>    
+
+      </div>
     </div>
   );
 }
