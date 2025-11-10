@@ -12,13 +12,6 @@ export default function EditorComponent({ onAnalyzed }) {
     const handleAnalyze = async (inputText) => {
         try {
 
-            const saveResponse = await sendRequest(
-                "http://localhost:8080/api/analyze/save",
-                "POST",
-                { text: inputText }
-            );
-            console.log("Saved:", saveResponse);
-
             const analyzeResponse = await sendRequest(
                 "http://localhost:8080/api/analyze",
                 "POST",
@@ -36,7 +29,7 @@ export default function EditorComponent({ onAnalyzed }) {
 
         <div className="editor-card " aria-labelledby="editor-title">
             <div className="controls">
-                <button className="btn primary" id="analyzeBtn" onClick={sendCode}>تحلیل لغوی</button>
+                <button className="btn primary2" id="analyzeBtn" onClick={sendCode}>Analyze </button>
                 {/* <button className="btn" id="demoFill">نمونه درج کن</button> */}
                 <div id='head'></div>
                 <div className="hint">محتوا به‌صورت رشته JSON ارسال می‌شود: <code></code></div>
