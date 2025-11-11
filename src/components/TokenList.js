@@ -11,7 +11,6 @@ export default function TokenList({ reloadTrigger }) {
   const getTokens = async () => {
     const response = await sendRequest("http://localhost:8080/api/analyze", "GET")
     SetResponse(response)
-    console.log(response);
   }
 
   // const [URL , steURL] = useState("http://localhost:3000/code")
@@ -30,9 +29,13 @@ export default function TokenList({ reloadTrigger }) {
       <div className="tokens-list" id="tokensList">
         {/* {response} */}
         {/* <!-- token badges injected here --> */}
-        {Object.entries(response) && Object.entries(response).map((res) => {
-          <SingleToken key={Math.random() * 100} tokenName={res.name} Attribiute={res.attribute} />
-        })}
+
+        {/* erorrrrrrrrrrrrrrrrrrr */}
+        {response && Object.entries(response).map(([key , value],index) => (
+          <SingleToken key={index} tokenName={key} attribute={value} />
+        ))}
+        
+        {/* erorrrrrrrrrrrrrrrrrrr */}
 
       </div>
 

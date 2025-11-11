@@ -15,7 +15,7 @@ export default function EditorComponent({ onAnalyzed }) {
             const analyzeResponse = await sendRequest(
                 "http://localhost:8080/api/analyze",
                 "POST",
-                { text: inputText }
+                { input : inputText }
             );
             console.log("tokenized", analyzeResponse);
             onAnalyzed();
